@@ -4,7 +4,7 @@ namespace Utils\Curls;
 
 
 // Función POST
-function curlPost($url,$data,$session_cookie=null,$json=true)
+function curlPost($url,$data=null,$session_cookie=null,$json=true)
 {
     try {
         $headers=array();
@@ -29,10 +29,12 @@ function curlPost($url,$data,$session_cookie=null,$json=true)
         curl_setopt($ch, CURLOPT_URL, $url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_POST, true); // Configura la solicitud como POST
-        if ($json==false) {
-            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query ($data)); // Define los datos a enviar en la solicitud
-        }else{
-            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data)); // Define los datos a enviar en la solicitud
+        if ($data != null) {
+            if ($json==false) {
+                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query ($data)); // Define los datos a enviar en la solicitud
+            }else{
+                curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data)); // Define los datos a enviar en la solicitud
+            }
         }
 
         // Configura las cabeceras si es necesario
@@ -115,7 +117,7 @@ function curlGet($url, $session_cookie = null, $json=true)
 
 
 // Funcion PUT
-function curlPut($url, $data, $session_cookie=null,$json=true)
+function curlPut($url, $data=null, $session_cookie=null,$json=true)
 {
     try {
         $headers = ['Content-Type: application/json'];
@@ -132,7 +134,9 @@ function curlPut($url, $data, $session_cookie=null,$json=true)
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "PUT");
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        if ($data != null) {
+            curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
+        }
 
         // Realizar la solicitud
         $response = json_decode(curl_exec($ch), true);
