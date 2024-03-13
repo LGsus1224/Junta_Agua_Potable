@@ -1,0 +1,7 @@
+# Variables to define in php config.php
+
+
+BASE_PATH = "/var/www/html/Junta_Agua_Potable"
+APP_BASE_URL" = "http://localhost/Junta_Agua_Potable/"
+BASE_ROUTE" = ""
+BASE_API" = "http://localhost:5000";

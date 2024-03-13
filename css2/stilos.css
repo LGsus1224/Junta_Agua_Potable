@@ -1,0 +1,44 @@
+#carta{
+    background-color: white;
+    border-color: #d9dbde;
+}
+
+#inputEmail {
+    background-color: #eef2f8;
+}
+#inputPassword{
+    background-color: #eef2f8;
+}
+
+.bg-pago-alert{
+    background-color: #EF9A9A !important;
+    color: #212121;
+}
+.bg-pago-alert.odd{
+    background-color: #E57373 !important;
+}
+
+@media screen {
+    .print-content{
+        display: none;
+    }
+}
+
+@media print {
+    .print-content{
+        display: block;
+        padding: 2rem;
+    }
+
+    #fecha-emision-planilla{
+        margin-left: 10px;
+    }
+
+    .signer-space{
+        width: 20rem;
+        height: 10px;
+        padding-top: 5rem;
+        border-bottom: rgb(42, 42, 42) 3px solid;
+        background-color: aqua;
+    }
+}

@@ -1,0 +1,10 @@
+Options All -Indexes
+
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-l
+
+# Definir variable de vista para el renderizador
+RewriteRule ^(.*)$ index.php?$1 [L,QSA]

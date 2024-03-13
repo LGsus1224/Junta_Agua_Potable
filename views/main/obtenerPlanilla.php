@@ -1,0 +1,34 @@
+<?php
+use Utils\APIurls;
+use Utils\Redirection;
+use Utils\Curls;
+use Utils\Session;
+use Utils\FlashMessages;
+
+
+try {
+    $id_planilla=$_GET['id'];
+
+    Redirection\checkRequestMethod("GET", "servicios");
+
+    $session_cookie = Session\get_session_cookie();
+
+    // URL a la que deseas hacer la solicitud GET
+    $url = str_replace('{id_planilla}', $id_planilla, APIurls\URLS::PLANILLAS['GET']);
+
+    $response = Curls\curlGet($url, $session_cookie);
+
+    if ($response[0] === 200) {
+        $servicio = $response[1]['success'];
+    } else if ($response[0] === 400) {
+        throw new Exception($response[1]['error'],$response[0]);
+    } else {
+        throw new Exception("No fue posible obtener los registros",$response[0]);
+    }
+} catch(Exception $e){
+    FlashMessages\create_flash_message(
+        $e->getMessage(),
+        'error'
+    );
+    Redirection\redirect("servicios");
+}
