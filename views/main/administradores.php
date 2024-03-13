@@ -28,7 +28,7 @@ include "obtenerAdministradores.php";
                                 <tr>
                                     <th>Id</th>
                                     <th>Nombre</th>
-                                    <th>Contraseña de un admistrador</th>
+                                    <th>Contraseña de un administrador</th>
                                     <th>Eliminar</th>
                                 </tr>
                             </thead>
@@ -45,11 +45,10 @@ include "obtenerAdministradores.php";
                                     echo '</td>';
 
                                     echo '<td>';
-                                    echo '<button title="Eliminar Cliente" type="button" id="delete_administrador" class="btn btn-danger m-1 open-confirm-modal" data-toggle="modal" data-target="#confirmModal_eliminar" data-id="' . $dato['id'] . '">';
+                                    echo '<button title="Eliminar Cliente" type="button" class="delete_administrador btn btn-danger m-1 open-confirm-modal" data-toggle="modal" data-target="#confirmModal_eliminar" data-id="' . $dato['id'] . '">';
                                     echo '<i class="fas fa-trash"></i>';
                                     echo '</button>';
                                     echo '</td>';
-
                                 }
 
                                 ?>
@@ -68,7 +67,7 @@ include "obtenerAdministradores.php";
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Actualizar informacion</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Actualizar información</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -200,7 +199,7 @@ include "obtenerAdministradores.php";
         }
     }
 
-    $('#delete_administrador').click(function() {
+    $('.delete_administrador').click(function() {
         confirm_delete = $('#confirmDelete');
         confirm_delete.attr('href',"<?= Redirection\format_url('administrador/delete?id=') ?>" + $(this).data('id'));
     });
