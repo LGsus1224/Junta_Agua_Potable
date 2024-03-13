@@ -26,5 +26,15 @@ function showFlashMessages (message, type){
                 "extendedTimeOut": "1000",
             });
         }
+        else if (tipo=="warning"){
+            toastr.warning('',alerta,{
+                "closeButton": true,
+                "newestOnTop": false,
+                "positionClass": "toast-top-right",
+                "timeOut": 0,
+                "extendedTimeOut": 0,
+                "tapToDismiss": false
+            });
+        }
     }
 }
